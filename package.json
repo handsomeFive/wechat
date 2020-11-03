@@ -4,15 +4,28 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "node": "node ./index.js",
+    "build": "webpack",
+    "server": "tsc && node ./dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/koa": "^2.11.6",
+    "@types/node": "^14.14.6",
     "koa": "^2.13.0",
+    "koa-bodyparser": "^4.3.0",
     "request": "^2.88.2",
     "request-promise-native": "^1.0.9",
-    "sha1": "^1.1.1"
+    "sha1": "^1.1.1",
+    "webpack": "^5.3.2",
+    "xml2js": "^0.4.23"
+  },
+  "devDependencies": {
+    "@types/koa-bodyparser": "^4.3.0",
+    "@types/xml2js": "^0.4.5",
+    "ts-loader": "^8.0.7",
+    "typescript": "^4.0.5",
+    "webpack-cli": "^4.1.0"
   }
 }
