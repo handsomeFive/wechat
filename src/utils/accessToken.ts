@@ -1,3 +1,5 @@
+import menu from "../config/menu";
+
 const { writeFile, readFile } = require("fs");
 const request = require("request-promise-native");
 const { appsecret, appID } = require("../config/index");
@@ -100,6 +102,45 @@ class Wechat {
         });
       });
   }
+  async fetchCreatMenu() {
+    const { access_token } = await this.fetchAccessToken();
+    return new Promise(function (resolve, reject) {
+      request({
+        method: "post",
+        url: ` https://api.weixin.qq.com/cgi-bin/menu/create?access_token=${access_token}`,
+        json: true,
+        body: menu,
+      })
+        .then((res: any) => {
+          if (res.errcode) {
+            reject(res.errmsg);
+          } else {
+            resolve();
+          }
+        })
+        .catch((res: any) => {
+          reject(res);
+        });
+    });
+  }
+  async fetchDeleteMenu() {
+    const { access_token } = await this.fetchAccessToken();
+    return new Promise(function (resolve, reject) {
+      request({
+        method: "get",
+        url: ` https://api.weixin.qq.com/cgi-bin/menu/delete?access_token=${access_token}`,
+      })
+        .then((res: any) => {
+          if (res.errcode) {
+            reject(res.errmsg);
+          } else {
+            resolve();
+          }
+        })
+        .catch((res: any) => {
+          reject(res);
+        });
+    });
+  }
 }
-// module.exports = { Wechat };
 export default Wechat;

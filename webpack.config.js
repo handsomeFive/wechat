@@ -1,13 +1,8 @@
 const path = require("path");
 module.exports = {
-  entry: "./index.ts",
+  entry: "./dist/index.js",
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "boundle"),
     filename: "app.js",
   },
-  module: {
-    rules: [
-      { test: /\.ts$/, use: 'ts-loader' }
-    ]
-  }
 };

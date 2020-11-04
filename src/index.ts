@@ -6,7 +6,7 @@ import WeChat from "./utils/accessToken";
 const app = new koa();
 const w = new WeChat();
 
-w.fetchAccessToken().then((res) => console.log(res));
+// w.fetchCreatMenu();
 
 app.use(bodyParse());
 
